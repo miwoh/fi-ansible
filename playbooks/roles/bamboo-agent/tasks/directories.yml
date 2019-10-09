@@ -1,5 +1,5 @@
 ---
-- name: Create bamboo directory
+- name: Create agent directories
   file:
     path: /work/{{ item }}
     state: directory

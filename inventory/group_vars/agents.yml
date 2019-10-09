@@ -1,22 +1,27 @@
 ---
+# the packages to extract. located in java/files
 java_packages:
-#  - jdk-9.0.4_linux-x64_bin
-#  - jdk7u80-linux-x64
-#  - jdk-12.0.1_linux-x64_bin
+  - jdk-9.0.4_linux-x64_bin
+  - jdk7u80-linux-x64
+  - jdk-12.0.1_linux-x64_bin
   - jdk-8u221-linux-x64
 
+# additional java versions. names specified here will be used as link target  
 java_locations:
-#  - jdk-9.0.4
-#  - jdk1.7.0_80
-#  - jdk-12.0.1
+  - jdk-9.0.4
+  - jdk1.7.0_80
+  - jdk-12.0.1
   - jdk1.8.0_221
 
+# the main java version (which is used when calling `java`)
 java_main:
   - jdk1.8.0_221
 
+# directory names for the agents. Adding more dirs means adding more agents
 agent_directories:
   - bamboo-agent-1
   - bamboo-agent-2
   - bamboo-agent-3
 
+# creates a unique uuid for each agent
 uuid: "{{ (999999999999999999999 | random | string + (lookup('pipe', 'date +%s%N'))) | to_uuid() }}"

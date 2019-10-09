@@ -5,13 +5,13 @@
       dest: /soft
     with_items: "{{ java_packages }}"
     become: yes
-  - name: Linking main java version
+  - name: Link main java version
     file:
       src: /soft/{{ item }}/bin/java
       dest: /usr/bin/java
       state: link
     with_items: "{{ java_main }}"
-  - name: Linking additional java versions
+  - name: Link additional java versions
     file:
       src: /soft/{{ item }}/bin/java
       dest: /usr/bin/{{ item }}

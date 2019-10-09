@@ -11,7 +11,7 @@
     /work/atlassian-bamboo-agent-installer-6.10.2.jar
     http://192.168.178.32:8085/agentServer/ install
   with_items: "{{ agent_directories }}"
-- name: Copy config
+- name: Copy agent config template
   copy:
     src: ../files/bamboo-agent.cfg.xml
     dest: /work/{{ item }}/.
@@ -19,7 +19,7 @@
     group: root
     mode: '0644'
   with_items: "{{ agent_directories }}"
-- name: Set agent names and start agents
+- name: Set agent identifiers (name, uuid) and start agents
   shell: cd /work/{{ item }} && sed -ie "s/<name>.*<\/name>/<name>$(hostname)-$(pwd | cut -d'/' -f3)<\/name>/g"
     bamboo-agent.cfg.xml && sed -ie "s/<agentUuid>.*<\/agentUuid>/<agentUuid>{{ uuid }}<\/agentUuid>/g"
     bamboo-agent.cfg.xml && ./bin/bamboo-agent.sh start
