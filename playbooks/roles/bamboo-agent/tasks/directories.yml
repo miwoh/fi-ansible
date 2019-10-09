@@ -1,6 +1,6 @@
 ---
 - name: Create bamboo directory
   file:
-    path: /work/bamboo-agent-1
+    path: /work/{{ item }}
     state: directory
-  become: yes
+  with_items: "{{ agent_directories }}"

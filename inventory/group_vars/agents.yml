@@ -13,3 +13,8 @@ java_locations:
 
 java_main:
   - jdk1.8.0_221
+
+agent_directories:
+  - bamboo-agent-1
+  - bamboo-agent-2
+  - bamboo-agent-3
