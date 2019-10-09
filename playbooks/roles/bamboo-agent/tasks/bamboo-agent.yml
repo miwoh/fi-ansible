@@ -5,9 +5,21 @@
     owner: root
     group: root
     mode: '0777'
-- name: Install agent
+- name: Install agents
   command: | 
     java -Dbamboo.home=/work/{{ item }} -jar 
     /work/atlassian-bamboo-agent-installer-6.10.2.jar
-    http://192.168.178.32:8085/agentServer/ start
+    http://192.168.178.32:8085/agentServer/ install
+  with_items: "{{ agent_directories }}"
+- name: Copy config
+  copy:
+    src: ../files/bamboo-agent.cfg.xml
+    dest: /work/{{ item }}/.
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ agent_directories }}"
+- name: Set agent names and start agents
+  shell: cd /work/{{ item }} && sed -ie "s/<name>.*<\/name>/<name>$(pwd | cut -d'/' -f3)<\/name>/g"
+    bamboo-agent.cfg.xml && ./bin/bamboo-agent.sh start
   with_items: "{{ agent_directories }}"
