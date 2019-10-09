@@ -1,0 +1,10 @@
+- name: Copy agent installer
+  copy:
+    src: ../files/atlassian-bamboo-agent-installer-6.10.2.jar
+    dest: /work/bamboo-agent-1/.
+    owner: root
+    group: root
+    mode: '0777'
+- name: Install agent
+  command: java -Dbamboo.home=/work/bamboo-agent-1/ -jar /work/bamboo-agent-1/atlassian-bamboo-agent-installer-6.10.2.jar http://192.168.178.32:8085/agentServer/ start
+  become: yes

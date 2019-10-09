@@ -1,0 +1,15 @@
+---
+java_packages:
+#  - jdk-9.0.4_linux-x64_bin
+#  - jdk7u80-linux-x64
+#  - jdk-12.0.1_linux-x64_bin
+  - jdk-8u221-linux-x64
+
+java_locations:
+#  - jdk-9.0.4
+#  - jdk1.7.0_80
+#  - jdk-12.0.1
+  - jdk1.8.0_221
+
+java_main:
+  - jdk1.8.0_221

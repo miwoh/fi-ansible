@@ -1,0 +1,19 @@
+---
+  - name: Extract java binaries to /soft
+    unarchive:
+      src: ../files/{{ item }}.tar.gz
+      dest: /soft
+    with_items: "{{ java_packages }}"
+    become: yes
+  - name: Linking main java version
+    file:
+      src: /soft/{{ item }}/bin/java
+      dest: /usr/bin/java
+      state: link
+    with_items: "{{ java_main }}"
+  - name: Linking additional java versions
+    file:
+      src: /soft/{{ item }}/bin/java
+      dest: /usr/bin/{{ item }}
+      state: link
+    with_items: "{{ java_locations }}"

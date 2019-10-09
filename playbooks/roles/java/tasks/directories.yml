@@ -1,0 +1,6 @@
+---
+- name: Create /soft directory
+  file:
+    path: /soft
+    state: directory
+  become: yes

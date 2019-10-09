@@ -1,0 +1,6 @@
+---
+- name: Create bamboo directory
+  file:
+    path: /work/bamboo-agent-1
+    state: directory
+  become: yes

@@ -1,0 +1,4 @@
+- name: Include the java setup
+  import_playbook: java-setup.yml
+- name: Include the bamboo setup
+  import_playbook: bamboo-agent-setup.yml
