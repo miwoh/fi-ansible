@@ -25,3 +25,6 @@ agent_directories:
 
 # creates a unique uuid for each agent
 uuid: "{{ (999999999999999999999 | random | string + (lookup('pipe', 'date +%s%N'))) | to_uuid() }}"
+
+# add bamboo server url as variable
+bamboo_url: http://192.168.178.32:8085

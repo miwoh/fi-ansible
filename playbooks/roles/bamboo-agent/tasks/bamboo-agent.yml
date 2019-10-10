@@ -9,7 +9,7 @@
   command: | 
     java -Dbamboo.home=/work/{{ item }} -jar 
     /work/atlassian-bamboo-agent-installer-6.10.2.jar
-    http://192.168.178.32:8085/agentServer/ install
+    {{ bamboo_url }}/agentServer/ install
   with_items: "{{ agent_directories }}"
 - name: Copy agent config template
   copy:
